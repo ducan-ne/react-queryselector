@@ -5,7 +5,7 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/",
+  "module": "./dist/react-queryselector.js",
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/ducan-ne/react-queryselector",
   "devDependencies": {
@@ -19,7 +19,7 @@
     "vite": "^3.0.4"
   },
   "exports": {
-    ".": "./dist/react-queryselector.mjs"
+    ".": "./dist/react-queryselector.js"
   },
   "scripts": {
     "build": "vite build && npm run tsc",
