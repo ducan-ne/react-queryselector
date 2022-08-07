@@ -174,7 +174,7 @@ function findReactRoots(root: Document | ShadowRoot, roots: ReactVNode[] = []): 
   return roots
 }
 
-const reactQuerySelectorAll = (selector: string, scope = document.body): Element[] => {
+const reactQuerySelector = (selector: string, scope = document.body): Element[] => {
   const { name, attributes } = parseAttributeSelector(selector, false)
 
   const reactRoots = findReactRoots(document)
@@ -203,4 +203,4 @@ const reactQuerySelectorAll = (selector: string, scope = document.body): Element
   return [...allRootElements]
 }
 
-export default reactQuerySelectorAll
+export default reactQuerySelector
