@@ -8,7 +8,7 @@ export default defineConfig({
     },
     lib: {
       entry: 'src/index.ts',
-      name: 'react-queryselector',
+      name: 'reactQuerySelector',
       fileName: 'react-queryselector',
     },
   },
