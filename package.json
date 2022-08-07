@@ -22,9 +22,9 @@
     ".": "./dist/react-queryselector.js"
   },
   "scripts": {
-    "build": "vite build && npm run tsc",
-    "postinstall": " export TARGET='./node_modules/playwright-core/packages/playwright-core/package.json'; cat <<< \"$(jq -r 'del(.exports)' $TARGET)\" > $TARGET",
-    "playground": "NO_DTS=true vite ./playground",
+    "build": "vite build && pnpm run tsc",
+    "postinstall": "export TARGET='./node_modules/playwright-core/packages/playwright-core/package.json'; cat <<< \"$(jq -r 'del(.exports)' $TARGET)\" > $TARGET",
+    "playground": "vite ./playground",
     "tsc": "tsc --declaration --emitDeclarationOnly --outDir dist"
   }
 }
