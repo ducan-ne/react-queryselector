@@ -1,7 +1,7 @@
 # react-queryselector
 
 Query react components in the same way query html tag with querySelector, useful for:
-- Testing, no data-testid anymore
+- Testing, stop using data-testid
 - Automation
 - Chrome extension for hacking the dom
 
