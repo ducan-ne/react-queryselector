@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "useUnknownInCatchVariables": false,
+    "importsNotUsedAsValues": "remove",
+    "paths": {
+      "@playwright/*": ["./node_modules/playwright-core/packages/playwright-core/src/*"]
+    },
+    "jsx": "react"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

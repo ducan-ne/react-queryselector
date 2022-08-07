@@ -1,0 +1,24 @@
+{
+  "name": "react-queryselector",
+  "version": "1.0.0",
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "@types/node": "^18.6.4",
+    "@types/react": "^18.0.16",
+    "@types/react-dom": "^18.0.6",
+    "playwright-core": "git://github.com/microsoft/playwright",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4"
+  },
+  "scripts": {
+    "build": "vite build && npm run tsc",
+    "postinstall": " export TARGET='./node_modules/playwright-core/packages/playwright-core/package.json'; cat <<< \"$(jq -r 'del(.exports)' $TARGET)\" > $TARGET",
+    "playground": "NO_DTS=true vite ./playground",
+    "tsc": "tsc --declaration --emitDeclarationOnly --outDir dist"
+  }
+}
