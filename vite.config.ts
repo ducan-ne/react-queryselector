@@ -3,9 +3,6 @@ import path from 'path'
 
 export default defineConfig({
   build: {
-    commonjsOptions: {
-      include: [/playwright-core/],
-    },
     lib: {
       entry: 'src/index.ts',
       name: 'reactQuerySelector',
