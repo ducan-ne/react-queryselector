@@ -185,6 +185,10 @@ const reactQuerySelector = (selector: string, scope = document.body): Element[] 
     if (treeNode.key !== undefined)
       props.key = treeNode.key
 
+    if (name.startsWith('_') && name.endsWith('_') && treeNode.name) {
+      return treeNode.name.includes(name.replace(/_/g, ''))
+    }
+
     if (name && treeNode.name !== name)
       return false
     if (treeNode.rootElements.some(domNode => !isInsideScope(scope, domNode)))
