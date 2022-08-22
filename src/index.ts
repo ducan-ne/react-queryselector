@@ -207,4 +207,106 @@ const reactQuerySelector = (selector: string, scope = document.body): Element[] 
   return [...allRootElements]
 }
 
+reactQuerySelector.one = (selector: string, scope = document.body): Element | null => {
+  const { name, attributes } = parseAttributeSelector(selector, false)
+
+  const reactRoots = findReactRoots(document)
+  for (const reactRoot of reactRoots) {
+    const tree = buildComponentsTree(reactRoot)
+    const find = filterComponentsTree(tree, treeNode => {
+      const props = treeNode.props ?? {}
+
+      if (treeNode.key !== undefined)
+        props.key = treeNode.key
+
+      if (name.startsWith('_') && name.endsWith('_') && treeNode.name) {
+        return treeNode.name.includes(name.replace(/_/g, ''))
+      }
+
+      if (name && treeNode.name !== name)
+        return false
+      if (treeNode.rootElements.some(domNode => !isInsideScope(scope, domNode)))
+        return false
+      for (const attr of attributes) {
+        if (!matchesComponentAttribute(props, attr))
+          return false
+      }
+      return true
+    })
+
+    if (find[0] && find[0].rootElements[0]) {
+      return find[0].rootElements[0]
+    }
+  }
+
+  return null
+}
+
+reactQuerySelector.nodes = (selector: string, scope = document.body): ComponentNode[] => {
+  const { name, attributes } = parseAttributeSelector(selector, false)
+
+  const reactRoots = findReactRoots(document)
+  const trees = reactRoots.map(reactRoot => buildComponentsTree(reactRoot))
+  const treeNodes = trees.map(tree => filterComponentsTree(tree, treeNode => {
+    const props = treeNode.props ?? {}
+
+    if (treeNode.key !== undefined)
+      props.key = treeNode.key
+
+    if (name.startsWith('_') && name.endsWith('_') && treeNode.name) {
+      return treeNode.name.includes(name.replace(/_/g, ''))
+    }
+
+    if (name && treeNode.name !== name)
+      return false
+    if (treeNode.rootElements.some(domNode => !isInsideScope(scope, domNode)))
+      return false
+    for (const attr of attributes) {
+      if (!matchesComponentAttribute(props, attr))
+        return false
+    }
+    return true
+  })).flat()
+  const nodes: Set<ComponentNode> = new Set()
+  for (const treeNode of treeNodes) {
+    nodes.add(treeNode)
+  }
+  return [...nodes]
+}
+
+reactQuerySelector.oneNode = (selector: string, scope = document.body): ComponentNode | null => {
+  const { name, attributes } = parseAttributeSelector(selector, false)
+
+  const reactRoots = findReactRoots(document)
+  for (const reactRoot of reactRoots) {
+    const tree = buildComponentsTree(reactRoot)
+    const find = filterComponentsTree(tree, treeNode => {
+      const props = treeNode.props ?? {}
+
+      if (treeNode.key !== undefined)
+        props.key = treeNode.key
+
+      if (name.startsWith('_') && name.endsWith('_') && treeNode.name) {
+        return treeNode.name.includes(name.replace(/_/g, ''))
+      }
+
+      if (name && treeNode.name !== name)
+        return false
+      if (treeNode.rootElements.some(domNode => !isInsideScope(scope, domNode)))
+        return false
+      for (const attr of attributes) {
+        if (!matchesComponentAttribute(props, attr))
+          return false
+      }
+      return true
+    })
+
+    if (find[0]) {
+      return find[0]
+    }
+  }
+
+  return null
+}
+
 export default reactQuerySelector
