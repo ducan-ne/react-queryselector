@@ -7,7 +7,7 @@ Query react components in the same way query html tag with querySelector, useful
 
 ## Usage
 ```javascript
-import reactQuerySelector from 'react-queryselector'
+import reactQuerySelector from '@solim/react-queryselector'
 
 // Setup the app
 
