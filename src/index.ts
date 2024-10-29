@@ -320,4 +320,6 @@ reactQuerySelector.oneNode = (selector: string, scope = document.body): Componen
   return null
 }
 
+reactQuerySelector.findReactRoots = findReactRoots
+
 export default reactQuerySelector
