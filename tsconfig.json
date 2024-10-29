@@ -15,11 +15,8 @@
     "skipDefaultLibCheck": true,
     "useUnknownInCatchVariables": false,
     "importsNotUsedAsValues": "remove",
-    "paths": {
-      "@playwright/*": ["./node_modules/playwright-core/packages/playwright-core/src/*"]
-    },
     "jsx": "react"
   },
-  "include": ["src"],
+  "include": ["src", "index.d.ts"],
   "exclude": ["node_modules"]
 }

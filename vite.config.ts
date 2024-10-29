@@ -11,7 +11,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@playwright": path.resolve(__dirname, "./node_modules/playwright-core/packages/playwright-core/src/")
+      "@playwright": path.resolve(__dirname, "./node_modules/playwright-core/packages/playwright-core/src")
     }
   }
 })
